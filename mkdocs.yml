@@ -1,0 +1,44 @@
+site_name: 🌀Spatial Reasoners
+site_url: https://spatialreasoners.github.io/spatialreasoners
+repo_url: https://github.com/spatialreasoners/spatialreasoners
+repo_name: spatialreasoners/spatialreasoners
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+  features:
+    - navigation.instant        # SPA-like snappy page loads
+    - navigation.sections
+    - navigation.top
+    - toc.follow
+    - content.code.copy
+
+markdown_extensions:
+  - toc:
+      permalink: "¶"
+  - admonition
+  - codehilite
+  - pymdownx.superfences
+  - pymdownx.details
+
+plugins:
+  - search
+  - git-revision-date-localized
+  - minify:
+      minify_html: true
+
+nav:
+  - Home: index.md
+  - Getting started:
+      - Installation: getting-started/installation.md
+      - Quick tour: getting-started/quick-tour.md
+  - API reference: api.md
+  - Changelog: changelog.md

@@ -5,12 +5,12 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python Version](https://img.shields.io/badge/python-3.11+-brightgreen.svg)]()
 [![PyPI version](https://img.shields.io/pypi/v/spatialreasoners.svg)](https://pypi.org/project/spatialreasoners/)
-<!-- [![Documentation](https://img.shields.io/badge/docs-latest-brightgreen.svg)](https://spatialreasoners.readthedocs.io) -->
+[![Documentation](https://img.shields.io/badge/docs-latest-brightgreen.svg)](https://spatialreasoners.github.io/spatialreasoners/)
 
 ## Overview
 
 <p align="center">
-  <img src="assets/overview.png" alt="Spatial Reasoners Overview"/>
+  <img src="https://github.com/spatialreasoners/spatialreasoners/blob/rc/sr-0.1-clean/assets/overview.png?raw=true" alt="Spatial Reasoners Overview"/>
 </p>
 
 🌀Spatial Reasoners is a Python package for spatial reasoning over continuous variables with generative denoising models. Denoising generative models have become the de-facto standard for image generation, due to their effectiveness in sampling from complex, high-dimensional distributions. Recently, they have started being explored in the context of reasoning over multiple continuous variables.
@@ -476,11 +476,11 @@ cd spatialreasoners
 pip install -e ".[dev]"
 ```
 
-### Running Tests
+<!-- ### Running Tests
 
 ```bash
 pytest tests/
-```
+``` -->
 
 ## 📜 License
 
@@ -488,7 +488,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙋 Support & Community
 
-- **Documentation**: [spatialreasoners.readthedocs.io](https://spatialreasoners.readthedocs.io)
+- **Documentation**: [spatialreasoners.github.io/spatialreasoners](https://spatialreasoners.github.io/spatialreasoners/)
 - **Issues**: [GitHub Issues](https://github.com/spatialreasoners/spatialreasoners/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/spatialreasoners/spatialreasoners/discussions)
 - **Email**: bpogodzi@mpi-inf.mpg.de
