@@ -1,0 +1,9 @@
+defaults:
+  - cfg_scheduler@label_cfg_scheduler: constant
+
+alpha: 0
+temperature: 1
+use_ema: true  # NOTE ignored if model does not have EMA
+# hyperparameter for the number of channels considered for CFG
+# NOTE this can be used for reproducing original DiT results with bug?
+num_cfg_channels: null

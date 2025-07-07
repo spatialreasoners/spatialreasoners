@@ -1,0 +1,5 @@
+defaults:
+  - scalar_time_sampler: uniform
+
+name: mean_beta
+beta_sharpness: 1.

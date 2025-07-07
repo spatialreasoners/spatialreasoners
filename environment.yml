@@ -1,0 +1,29 @@
+name: afm
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - pip
+  - python
+  - pytorch
+  - torchaudio
+  - torchvision
+  - wheel
+  - pip:
+      - accelerate
+      - av
+      - beartype
+      - colorama
+      - colorspacious
+      - dacite
+      - diffusers
+      - einops
+      - gdown
+      - hydra-core
+      - jaxtyping
+      - lightning
+      - matplotlib
+      - pandas
+      - wandb
+      - wandb[media]

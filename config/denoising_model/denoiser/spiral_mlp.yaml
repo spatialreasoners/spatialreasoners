@@ -1,0 +1,5 @@
+# @package _global_.denoising_model.denoiser
+name: spiral_mlp
+num_hidden_layers: 2
+num_hidden_units: 128
+dropout_rate: 0.1 

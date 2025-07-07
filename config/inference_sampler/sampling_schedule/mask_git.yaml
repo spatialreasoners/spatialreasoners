@@ -1,0 +1,3 @@
+name: mask_git
+num_steps_per_group: 100
+num_groups: 10

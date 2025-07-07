@@ -1,0 +1,45 @@
+# @package _global_
+
+defaults:
+  - benchmark@validation_benchmarks.sudoku_1000: mnist_sudoku_top1000
+  - benchmark@test_benchmarks.sudoku_easy_1000: mnist_sudoku_top1000_easy
+  - benchmark@test_benchmarks.sudoku_medium_1000: mnist_sudoku_top1000_medium
+  - benchmark@test_benchmarks.sudoku_hard_1000: mnist_sudoku_top1000_hard
+  - /denoising_model/denoiser: dit_s_2
+  - /dataset: mnist_sudoku_top1000
+  - _self_
+
+variable_mapper:
+  name: sudoku
+
+denoising_model:
+  flow:
+    variance: learned_range
+  learn_uncertainty: true
+  learn_variance: true
+  time_interval: [0.0, 1.0] # zero noise, full noise
+  tokenizer:
+    name: image_dit
+    num_tokens_per_spatial_dim: 2
+  parameterization: ut
+  has_ema: false
+
+  conditioning:
+    label: false
+    mask: true
+
+validation_benchmarks:
+  sudoku_1000:
+    dataset:
+      subset_size: 100
+
+  
+wandb:
+  tags: [sudoku]
+
+data_loader:
+# 8 for float32 on A40, 16 for mixed precision on A40, 32 for mixed precision on H100
+  train:
+    batch_size: 56
+  val:
+    batch_size: 56

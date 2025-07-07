@@ -1,0 +1,6 @@
+name: mnist
+root: null
+data_shape: [28, 28]
+subset_size: null
+augment: false
+grayscale: true

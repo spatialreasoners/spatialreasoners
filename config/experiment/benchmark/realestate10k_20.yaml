@@ -1,0 +1,11 @@
+defaults:
+  - /dataset: realestate10k
+
+dataset:
+  subset_size: 20
+
+evaluation:
+  name: video_pose_sampling
+  visualize_sigma: true
+  calculate_metrics: true
+
