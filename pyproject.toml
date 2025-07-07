@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "spatialreasoners"
-version = "0.1.2"
+version = "0.1.3"
 description = "SpatialReasoners: A framework for training Spatial Reasoning Models in any domain"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -94,7 +94,7 @@ all = ["spatialreasoners[dev,docs]"]
 
 [project.urls]
 Homepage = "https://github.com/spatialreasoners/spatialreasoners"
-Documentation = "https://spatialreasoners.github.io/spatialreasoners/"
+Documentation = "https://spatialreasoners.github.io/"
 Repository = "https://github.com/spatialreasoners/spatialreasoners"
 Issues = "https://github.com/spatialreasoners/spatialreasoners/issues"
 

@@ -5,7 +5,7 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python Version](https://img.shields.io/badge/python-3.11+-brightgreen.svg)]()
 [![PyPI version](https://img.shields.io/pypi/v/spatialreasoners.svg)](https://pypi.org/project/spatialreasoners/)
-[![Documentation](https://img.shields.io/badge/docs-latest-brightgreen.svg)](https://spatialreasoners.github.io/spatialreasoners/)
+[![Documentation](https://img.shields.io/badge/docs-latest-brightgreen.svg)](https://spatialreasoners.github.io/)
 
 ## Overview
 
@@ -488,7 +488,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙋 Support & Community
 
-- **Documentation**: [spatialreasoners.github.io/spatialreasoners](https://spatialreasoners.github.io/spatialreasoners/)
+- **Documentation**: [spatialreasoners.github.io](https://spatialreasoners.github.io/)
 - **Issues**: [GitHub Issues](https://github.com/spatialreasoners/spatialreasoners/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/spatialreasoners/spatialreasoners/discussions)
 - **Email**: bpogodzi@mpi-inf.mpg.de
