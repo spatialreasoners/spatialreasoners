@@ -1,0 +1,11 @@
+defaults:
+  - mar
+
+block:
+  attention:
+    num_heads: 12
+d_hid: 768
+depth: 12
+denoiser_mlp:
+  d_hid: 1024
+  depth: 6

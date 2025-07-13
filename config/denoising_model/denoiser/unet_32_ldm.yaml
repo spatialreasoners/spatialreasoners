@@ -1,0 +1,8 @@
+defaults:
+  - unet
+
+hid_dims: [256, 512, 768, 1024]
+attention: [true, true, true, false]
+num_blocks: 3
+res_block_cfg:
+  dropout: 0.0

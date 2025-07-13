@@ -1,0 +1,6 @@
+name: "adaptive_softmax"
+scale: 0.1
+max_clip_iter: 8
+finished_threshold: None
+max_steps: 100
+alpha: 0.5

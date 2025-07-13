@@ -1,0 +1,8 @@
+defaults:
+  - /dataset: imagenet256
+  - /model/autoencoder@autoencoder: kl_8
+
+data_loader:
+  num_workers: 16
+  persistent_workers: true
+  batch_size: 256

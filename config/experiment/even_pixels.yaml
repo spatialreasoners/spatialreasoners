@@ -1,0 +1,35 @@
+# @package _global_
+
+defaults:
+  - benchmark@validation_benchmarks.even_pixels_1000: even_pixels_1000
+  - benchmark@test_benchmarks.even_pixels_100: even_pixels_100
+  - /denoising_model/denoiser: dit_s_2
+  - /dataset: even_pixels #mnist_sudoku_lazy_top100
+
+variable_mapper:
+  name: image
+  variable_patch_size: 8
+
+denoising_model:
+  flow:
+    variance: learned_range
+  learn_uncertainty: true
+  learn_variance: true
+  time_interval: [0.0, 1.0] # zero noise, full noise
+  tokenizer:
+    name: image_dit
+    num_tokens_per_spatial_dim: 2
+  parameterization: ut
+  has_ema: false
+  
+wandb:
+  tags: [even_pixels]
+
+data_loader:
+# 8 for float32 on A40, 16 for mixed precision on A40, 32 for mixed precision on H100
+  train:
+    batch_size: 256
+  val:
+    batch_size: 256
+
+
