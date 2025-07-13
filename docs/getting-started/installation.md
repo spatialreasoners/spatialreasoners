@@ -118,4 +118,4 @@ If you're still having issues:
 
 ## Next Steps
 
-Now that you have Spatial Reasoners installed, continue with the [Quick Tour](quick-tour.md) to learn the basics, or directly check our [Template Project]() TODO
+Now that you have Spatial Reasoners installed, continue with the [Quick Tour](quick-tour.md) to learn the basics, or directly check our [Template Project](https://github.com/spatialreasoners/spatialreasoners/tree/rc/sr-0.1.4-c/example_project).

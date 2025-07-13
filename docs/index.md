@@ -58,7 +58,7 @@ In some domains starting your work could be even faster due to already implement
 - **Image generation** With prepared dataset implementations for ImageNet, CIFAR10, CelebA, SRM's Counting Stars and many others
 - **Video generation** Where a variable is a single frame -- as in [Diffusion Forcing](https://www.boyuan.space/diffusion-forcing/)
 
-We also highly encourage you to take Spatial Reasoners to completely new domains -- see our [example project]() [TODO] to see how to train new models in your domain!
+We also highly encourage you to take Spatial Reasoners to completely new domains -- see our [example project](https://github.com/spatialreasoners/spatialreasoners/tree/rc/sr-0.1.4-c/example_project) to see how to train new models in your domain!
 
 
 

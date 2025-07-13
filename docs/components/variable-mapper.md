@@ -1,6 +1,6 @@
 # What are Variables?
 
-[SRMs]() TODO operate on *Variables* -- pieces of a sample that in full define the state of the sample. *Variables* might not only directly partition the data, but could also be some latent encoding of the sample. The only constraint we have, is that the shape of the *Variables* remains constant throughout training.
+[SRMs](https://geometric-rl.mpi-inf.mpg.de/srm/) operate on *Variables* -- pieces of a sample that in full define the state of the sample. *Variables* might not only directly partition the data, but could also be some latent encoding of the sample. The only constraint we have, is that the shape of the *Variables* remains constant throughout training.
 
 
 # What do you most likely need?
