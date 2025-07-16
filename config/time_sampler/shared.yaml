@@ -1,0 +1,4 @@
+defaults:
+  - scalar_time_sampler: uniform
+
+name: shared

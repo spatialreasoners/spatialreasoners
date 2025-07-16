@@ -1,0 +1,14 @@
+name: counting_polygons_blank
+root: null
+labeler_name: explicit # explicit, ambiguous or None
+are_nums_on_images: false
+data_shape: [3, 128, 128]
+subset_size: null
+min_vertices: 3
+max_vertices: 7
+hsl_lightness: 0.25
+hsl_saturation: 0.25
+augment: false
+
+counting_polygons_classifier_path: null
+counting_polygons_classifier_model_base: "resnet18"

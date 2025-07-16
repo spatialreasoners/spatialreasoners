@@ -1,0 +1,92 @@
+# @package _global_
+
+defaults:
+  - benchmark@validation_benchmarks.sudoku_1000: mnist_sudoku_top1000
+  - benchmark@test_benchmarks.sudoku_easy_1000: mnist_sudoku_top1000_easy
+  - benchmark@test_benchmarks.sudoku_medium_1000: mnist_sudoku_top1000_medium
+  - benchmark@test_benchmarks.sudoku_hard_1000: mnist_sudoku_top1000_hard
+  - /denoising_model/flow: rectified 
+  - /denoising_model/denoiser: unet_256
+  - /dataset: mnist_sudoku_top1000
+  - _self_
+
+variable_mapper:
+  name: sudoku
+
+denoising_model:
+  flow:
+    variance: learned_range
+  learn_uncertainty: true
+  learn_variance: true
+  time_interval: [0.0, 1.0] # zero noise, full noise
+  tokenizer:
+    name: unet
+    concat_mask: true
+  parameterization: ut
+  has_ema: false
+
+  conditioning:
+    label: false
+    mask: true
+
+loss:
+  mu:
+    name: mse
+  vlb:
+    name: vlb
+  sigma:
+    name: nll
+    weight: 0.01
+
+validation_benchmarks:
+  sudoku_1000:
+    dataset:
+      subset_size: 4
+    evaluation:
+      save_sampling_video: true
+      log_sampling_video: true
+      visualize_time: true
+      normalize_sigma_per_image: false
+      max_sigma_threshold: 2.0
+      save_final_images: true
+      save_intermediate_images: true
+      log_final_images: true
+      # num_log_samples: 20
+
+
+test_benchmarks:
+  sudoku_easy_1000:
+    dataset:
+      subset_size: 64
+    evaluation:
+      # num_log_samples: 20
+      visualize_sigma: true
+      visualize_x: true
+      calculate_metrics: true
+
+  sudoku_medium_1000:
+    dataset:
+      subset_size: 64
+    evaluation:
+      # num_log_samples: 20
+      visualize_sigma: true
+      visualize_x: true
+      calculate_metrics: true
+
+  sudoku_hard_1000:
+    dataset:
+      subset_size: 64
+    evaluation:
+      # num_log_samples: 20
+      visualize_sigma: true
+      visualize_x: true
+      calculate_metrics: true
+wandb:
+  tags: [sudoku]
+
+data_loader:
+# 8 for float32 on A40, 16 for mixed precision on A40, 32 for mixed precision on H100
+  train:
+    batch_size: 4
+  val:
+    batch_size: 4

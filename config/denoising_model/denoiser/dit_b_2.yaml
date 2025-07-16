@@ -1,0 +1,9 @@
+defaults:
+  - dit
+  
+block:
+  attention:
+    num_heads: 12
+d_hid: 768
+# patch_size: [2, 2]
+depth: 12

@@ -1,0 +1,78 @@
+# @package _global_
+# Spiral training experiment - builds everything from scratch
+
+# No defaults to avoid struct composition issues
+defaults:
+  - benchmark@validation_benchmarks.spiral_val: spiral_sampling
+  - benchmark@test_benchmarks.spiral_test: spiral_sampling
+  - /dataset: spiral
+
+# Variable mapper configuration  
+variable_mapper:
+  name: spiral
+
+# Denoising model configuration
+denoising_model:
+  learn_uncertainty: true
+  learn_variance: false
+  time_interval: [0.0, 1.0]
+  parameterization: ut
+  has_ema: true
+  
+  tokenizer:
+    name: spiral
+    
+  denoiser:
+    name: spiral_mlp
+    num_hidden_layers: 3
+    num_hidden_units: 256
+    dropout_rate: 0.1
+    
+  flow:
+    name: rectified
+    
+  conditioning:
+    label: false
+    mask: false
+
+# Time sampler
+time_sampler:
+  name: mean_beta
+
+# Loss configuration
+loss:
+  mse:
+    name: mse
+  vlb:
+    name: vlb
+
+# Training configuration
+train:
+  step_offset: 0
+  log_losses_per_time_split: true
+  num_time_logging_splits: 10
+  num_time_samples: 1
+  ema_decay_rate: 0.9999
+
+# Optimizer
+optimizer:
+  name: adam
+  lr: 0.001
+  scale_lr: false
+  kwargs: {}
+  scheduler: null
+
+
+# Checkpointing config
+checkpointing:
+  load: null
+  resume: false
+  save: true
+  every_n_train_steps: 1000
+  every_n_train_steps_persistently: 1000
+  save_top_k: null
+
+
+
+# Other required fields
+mode: train

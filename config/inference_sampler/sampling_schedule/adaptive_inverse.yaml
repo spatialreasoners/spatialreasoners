@@ -1,0 +1,7 @@
+name: "adaptive_inverse"
+max_steps: 10
+alpha: 0.5
+max_approx_error: 5.0e-4
+num_search_steps: 20
+min_alpha: 1.0e-5
+min_step_size: 0.1

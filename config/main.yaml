@@ -1,0 +1,75 @@
+defaults:
+  - experiment: null  # Users should specify experiment, or API will default to mnist_sudoku
+  - time_sampler: mean_beta 
+  - optimizer: default
+  - _self_ 
+  
+validation_benchmarks: {} # override in experiment
+test_benchmarks: {} # overrride in experiment
+
+loss:
+  mu:
+    name: mse
+  # vlb:
+  #   name: vlb
+
+train:
+  step_offset: 0
+
+hydra:
+  run:
+    dir: ""   # override!
+
+wandb:
+  project: srm
+  entity: bartekpog-max-planck-institute-for-informatics
+  mode: online
+  activated: true
+
+mode: train
+
+data_loader:
+  # Avoid having to spin up new processes to print out visualizations.
+  train:
+    num_workers: 16
+    persistent_workers: true
+    batch_size: 128
+    # seed: 1234
+  test:
+    num_workers: 4
+    persistent_workers: false
+    batch_size: 16
+    # seed: 2345
+  val:
+    num_workers: 16
+    persistent_workers: true
+    batch_size: 16
+    # seed: 3456
+
+checkpointing:
+  load: null #/BS/var-training/work/afm/outputs/realestate10k/2025-05-26_01-27-50/checkpoints/reference.ckpt # null
+  resume: true
+  save: false
+  every_n_train_steps: 3500
+  every_n_train_steps_persistently: 50_000
+  save_top_k: null
+
+mnist_classifier: /BS/var-training/work/visual_reasoning/model_weights/mnist_cnn.pth
+seed: null
+
+trainer:
+  max_epochs: -1
+  max_steps: -1
+  val_check_interval: 2000
+  log_every_n_steps: 1000
+  task_steps: null
+  accumulate_grad_batches: 1
+  precision: bf16-mixed
+  num_nodes: 1
+  validate: true
+  profile: false
+  detect_anomaly: false
+
+torch:
+  float32_matmul_precision: high  # (null --> default) highest / high / medium
+  cudnn_benchmark: false

@@ -1,0 +1,5 @@
+name: ffhq
+root: null
+data_shape: [3, 128, 128]
+subset_size: null
+augment: true
