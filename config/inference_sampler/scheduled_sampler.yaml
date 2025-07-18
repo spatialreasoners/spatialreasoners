@@ -1,0 +1,5 @@
+defaults:
+  - inference_sampler
+  - sampling_schedule: graph_sequential
+
+name: scheduled

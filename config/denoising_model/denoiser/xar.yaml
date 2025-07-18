@@ -1,0 +1,21 @@
+defaults:
+  - denoiser
+
+name: xar
+
+time_embedding:
+# Scaling already implemented in xAR
+  scale: 1
+  shift: 0
+
+encoder_block: &block
+  attention:
+    qk_norm: null
+  feed_forward:
+    name: timm_swiglu
+    act_layer: gelu
+  mlp_ratio: 2.667  # 8/3
+  norm_layer:
+    name: rms
+    elementwise_affine: false
+decoder_block: *block

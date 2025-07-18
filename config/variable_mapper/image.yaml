@@ -1,0 +1,2 @@
+name: image
+variable_patch_size: 4 # how many neighbor pixels will have the same noise level

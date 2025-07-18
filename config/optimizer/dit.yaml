@@ -1,0 +1,8 @@
+name: AdamW
+lr: 3.90625e-7  # 1.e-4 / 256
+scale_lr: true
+kwargs:
+  betas: [0.9, 0.999]
+  weight_decay: 0
+gradient_clip_val: null
+gradient_clip_algorithm: norm
