@@ -9,7 +9,7 @@
 [![arXiv](https://img.shields.io/badge/arXiv-2507.10768-b31b1b.svg)](https://arxiv.org/abs/2507.10768)
 
 <p align="center">
-  <img src="https://github.com/spatialreasoners/spatialreasoners/blob/main/assets/inference.gif" alt="Spatial Reasoners Sampling"/>
+  <img src="https://github.com/spatialreasoners/spatialreasoners/blob/main/assets/inference.gif?raw=true" alt="Spatial Reasoners Sampling"/>
 </p>
 
 ## Overview
