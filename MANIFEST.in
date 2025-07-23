@@ -1,0 +1,7 @@
+# Include config files
+recursive-include config *.yaml *.yml
+include config/__init__.py
+
+# Include documentation
+include README.md
+include LICENSE

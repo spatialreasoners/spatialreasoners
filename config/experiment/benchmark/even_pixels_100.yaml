@@ -1,0 +1,11 @@
+defaults:
+  - /dataset: even_pixels
+
+dataset:
+  subset_size: 100
+
+evaluation:
+  name: even_pixels
+  visualize_sigma: true
+  calculate_metrics: true
+  num_log_samples: 4

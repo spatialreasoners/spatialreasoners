@@ -1,0 +1,21 @@
+name: counting_polygons_ffhq
+root: null
+labeler_name: ambiguous #explicit # explicit, ambiguous or null
+are_nums_on_images: false
+data_shape: [3, 128, 128]
+subset_size: null
+min_vertices: 3
+max_vertices: 7
+hsv_saturation: 1.0
+hsv_value: 0.9
+augment: false
+
+counting_polygons_classifier_path: null
+counting_polygons_classifier_model_base: "resnet50"
+
+subdataset_cfg:
+  name: ffhq
+  root: null
+  data_shape: [3, 128, 128]
+  subset_size: null
+  augment: true

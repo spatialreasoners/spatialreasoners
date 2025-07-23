@@ -1,0 +1,84 @@
+# @package _global_
+# Simple experiment config for API usage
+# This avoids the complex benchmarks and overrides that cause composition issues
+
+defaults:
+  # - /dataset: cifar10
+  # - /denoising_model/denoiser: dit_s_2
+  # - /denoising_model/flow: cosine
+  # - /variable_mapper: image
+  - _self_
+
+# Simple denoising model configuration
+denoising_model:
+  learn_uncertainty: true
+  learn_variance: true
+  time_interval: [0.0, 1.0]
+  tokenizer:
+    name: image_dit
+    num_tokens_per_spatial_dim: 2
+  parameterization: ut
+  has_ema: false
+  conditioning:
+    label: false
+    mask: false
+
+# Simple data loader configuration
+data_loader:
+  train:
+    batch_size: 32
+  val:
+    batch_size: 32
+
+# Required configurations from main.yaml
+loss:
+  mu:
+    name: mse
+
+train:
+  step_offset: 0
+
+# Basic trainer config
+trainer:
+  max_epochs: -1
+  max_steps: -1
+  val_check_interval: 2000
+  log_every_n_steps: 1000
+  task_steps: null
+  accumulate_grad_batches: 1
+  precision: bf16-mixed
+  num_nodes: 1
+  validate: true
+  profile: false
+  detect_anomaly: false
+
+# Basic checkpointing config
+checkpointing:
+  load: null
+  resume: false
+  save: false
+  every_n_train_steps: 5000
+  every_n_train_steps_persistently: null
+  save_top_k: null
+
+# Basic torch config
+torch:
+  float32_matmul_precision: high
+  cudnn_benchmark: false
+
+# No complex benchmarks - just empty configs
+validation_benchmarks: {}
+test_benchmarks: {}
+
+# Basic wandb config
+wandb:
+  project: spatialreasoners
+  entity: your-entity  # Users should override this
+  mode: online
+  activated: true
+  tags: [api_default]
+
+# Other required fields
+mode: train
+seed: null
+mnist_classifier: null 
