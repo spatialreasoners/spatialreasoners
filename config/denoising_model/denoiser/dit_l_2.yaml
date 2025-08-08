@@ -1,0 +1,8 @@
+defaults:
+  - dit
+
+block:
+  attention:
+    num_heads: 16
+d_hid: 1024
+depth: 24

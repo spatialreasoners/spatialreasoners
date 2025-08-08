@@ -1,0 +1,5 @@
+name: graph_sequential
+num_parallel: 1
+overlap: 0.8
+reverse_certainty: False
+max_steps: 200

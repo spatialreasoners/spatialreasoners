@@ -1,0 +1,36 @@
+name: Run Python tests
+
+on:   
+  pull_request:
+    branches:
+      - main
+      - dev
+    types:
+      - opened
+      - synchronize  # Triggers when new commits are pushed to the source branch of an open PR
+
+jobs:
+  build:
+    name: Run tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.12"]
+
+    steps:
+      - uses: szenius/set-timezone@v1.2
+        with:
+          timezoneLinux: "Europe/Berlin"
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+      - run: pip install -r requirements.txt
+      - run: pip install pytest pytest-md pytest-emoji
+      - uses: pavelzw/pytest-action@v2
+        with:
+          emoji: true
+          verbose: false
+          job-summary: true

@@ -1,0 +1,13 @@
+name: AdamW
+lr: 3.90625e-7  # 1.e-4 / 256
+scale_lr: true
+kwargs:
+  betas: [0.9, 0.999]
+  weight_decay: 0
+scheduler:
+  name: LinearLR
+  kwargs:
+    start_factor: 2.e-4
+    total_iters: 5000
+gradient_clip_val: 3.0
+gradient_clip_algorithm: norm
