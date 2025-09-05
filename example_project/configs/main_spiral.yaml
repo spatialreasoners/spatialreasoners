@@ -1,0 +1,58 @@
+defaults:
+  - experiment: null  # Users should specify experiment, or API will default to mnist_sudoku
+  - time_sampler: mean_beta 
+  - optimizer: default
+  
+validation_benchmarks: {} # override in experiment
+test_benchmarks: {} # overrride in experiment
+
+loss:
+  mu:
+    name: mse
+    
+train:
+  step_offset: 0
+
+hydra:
+  run:
+    dir: ""   # override!
+
+wandb:
+  project: sr #srm
+  entity: sr #bartekpog-max-planck-institute-for-informatics
+  mode: offline
+  activated: false
+
+data_loader:
+  # Avoid having to spin up new processes to print out visualizations.
+  train:
+    num_workers: 16
+    persistent_workers: true
+    batch_size: 4096
+  test:
+    num_workers: 4
+    persistent_workers: false
+    batch_size: 4096
+  val:
+    num_workers: 16
+    persistent_workers: true
+    batch_size: 4096
+
+seed: null
+
+trainer:
+  max_epochs: -1
+  max_steps: 40001
+  val_check_interval: 10000
+  log_every_n_steps: 5000
+  task_steps: null
+  accumulate_grad_batches: 1
+  precision: bf16-mixed
+  num_nodes: 1
+  validate: true
+  profile: false
+  detect_anomaly: false
+
+torch:
+  float32_matmul_precision: high  # (null --> default) highest / high / medium
+  cudnn_benchmark: false

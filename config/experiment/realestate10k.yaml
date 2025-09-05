@@ -1,0 +1,111 @@
+# @package _global_
+
+defaults:
+  - benchmark@validation_benchmarks.realestate10k_20: realestate10k_20
+  - benchmark@test_benchmarks.realestate10k_20: realestate10k_20
+  - /denoising_model/denoiser: u_vit3d_pose
+  - /denoising_model/flow: continuous_cosine_logsnr #cosine #diffusion
+  - /dataset: realestate10k
+  - _self_
+
+variable_mapper:
+  name: video_pose
+
+denoising_model:
+  flow:
+    variance: fixed_small #learned_range
+  learn_uncertainty: false
+  learn_variance: false
+  time_interval: [0.0, 1.0] # zero noise, full noise
+  tokenizer:
+    name: pose_video_u_vit
+  parameterization: v
+  denoiser_parameterization: v
+  use_scaled_logsnr: true
+
+  has_ema: false
+
+  conditioning:
+    label: false
+    mask: false
+
+
+validation_benchmarks:
+  realestate10k_20:
+    dataset:
+      subset_size: 20
+    evaluation:
+      save_sampling_video: true
+      log_sampling_video: true
+      visualize_time: true
+      normalize_sigma_per_image: false
+      visualize_sigma: false
+      visualize_x: false
+      max_sigma_threshold: 2.0
+      save_final_images: true
+      save_intermediate_images: true
+      log_final_images: true
+      calculate_metrics: false
+
+test_benchmarks:
+  realestate10k_20:
+    dataset:
+      subset_size: 50
+    evaluation:
+      samplers:
+        # default_fixed:
+        #   name: scheduled
+        #   sampling_schedule: 
+        #     name: fixed
+        #     num_steps: 100
+        # graph_certain_0.93:
+        #   name: scheduled
+        #   sampling_schedule: 
+        #     name: graph_sequential
+        #     max_steps: 100
+        #     overlap: 0.93
+        # graph_certain_0.95:
+        #   name: scheduled
+        #   sampling_schedule: 
+        #     name: graph_sequential
+        #     max_steps: 100
+        #     overlap: 0.95
+        graph_certain_0.7:
+          name: scheduled
+          sampling_schedule: 
+            name: graph_sequential
+            max_steps: 100
+            overlap: 0.7
+
+        graph_certain_autoregressive:
+          name: scheduled
+          sampling_schedule: 
+            name: graph_sequential
+            max_steps: 100
+            overlap: 0.0
+      save_sampling_video: true
+      log_sampling_video: true
+      visualize_time: true
+      normalize_sigma_per_image: false
+      visualize_sigma: false
+      visualize_x: true
+      max_sigma_threshold: 2.0
+      save_final_images: true
+      save_intermediate_images: true
+      log_final_images: true
+      calculate_metrics: false
+      
+wandb:
+  tags: [realestate10k]
+
+data_loader:
+# 8 for float32 on A40, 16 for mixed precision on A40, 32 for mixed precision on H100
+  train:
+    batch_size: 1
+    num_workers: 1
+  val:
+    batch_size: 1
+    num_workers: 1
+  test:
+    batch_size: 1
+    num_workers: 1

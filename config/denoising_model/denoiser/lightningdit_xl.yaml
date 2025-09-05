@@ -1,0 +1,9 @@
+defaults:
+  - lightningdit
+
+block:
+  attention:
+    num_heads: 16
+
+d_hid: 1152
+depth: 28

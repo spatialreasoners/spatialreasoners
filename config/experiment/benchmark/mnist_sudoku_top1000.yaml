@@ -1,0 +1,10 @@
+defaults:
+  - /dataset: mnist_sudoku_top1000
+
+dataset:
+  subset_size: 1000
+
+evaluation:
+  name: mnist_sudoku
+  visualize_sigma: true
+  calculate_metrics: true

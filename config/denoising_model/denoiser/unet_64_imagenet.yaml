@@ -1,0 +1,6 @@
+defaults:
+  - unet
+
+hid_dims: [192, 384, 576, 768]
+attention: [false, true, true, true]
+num_blocks: 3

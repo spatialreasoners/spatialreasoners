@@ -1,0 +1,20 @@
+name: kl_image
+scaling_factor: 1.0
+checkpoint_path: ./pretrained/autoencoder/kl_16_vavae.pt
+latent_stats_path: ./pretrained/autoencoder/latent_stats/kl_16_vavae_imagenet.pt
+architecture:
+  down_block_types:
+    - DownEncoderBlock2D
+    - DownEncoderBlock2D
+    - DownEncoderBlock2D
+    - DownEncoderBlock2D
+    - AttnDownEncoderBlock2D
+  up_block_types:
+    - AttnUpDecoderBlock2D
+    - UpDecoderBlock2D
+    - UpDecoderBlock2D
+    - UpDecoderBlock2D
+    - UpDecoderBlock2D
+  block_out_channels: [128, 128, 256, 256, 512]
+  layers_per_block: 2
+  latent_channels: 32

@@ -1,0 +1,6 @@
+defaults:
+  - mnist_sudoku_top1000
+  - _self_
+  
+dataset:
+  given_cells_range: [54, 81]

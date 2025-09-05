@@ -1,0 +1,11 @@
+defaults:
+  - dataset: counting_polygons_blank
+  - evaluation: counting_polygons_blank
+
+dataset:
+  subset_size: 1000
+
+evaluation:
+  name: counting_polygons_evaluation
+  classifier_model_base: resnet18
+  classifier_path: data/counting_polygons/classifiers/blank_128/model_last.pth

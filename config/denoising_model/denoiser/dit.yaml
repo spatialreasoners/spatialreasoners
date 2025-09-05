@@ -1,0 +1,12 @@
+defaults:
+  - denoiser
+
+name: dit
+block:
+  attention:
+    # NOTE that this is not the case for the original DiT 
+    # but improves training stability
+    qk_norm: null
+  feed_forward:
+    name: mlp
+    activation: gelu_approx

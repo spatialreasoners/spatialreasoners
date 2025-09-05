@@ -1,0 +1,5 @@
+defaults:
+  - beta_schedule: cosine
+
+name: original_diffusion
+num_timesteps: 1000
