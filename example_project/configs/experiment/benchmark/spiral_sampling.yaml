@@ -1,0 +1,11 @@
+defaults:
+  - /dataset: spiral
+
+dataset:
+  name: spiral
+  subset_size: 20
+
+evaluation:
+  name: spiral_sampling
+  calculate_metrics: true
+  num_spiral_loops: 4

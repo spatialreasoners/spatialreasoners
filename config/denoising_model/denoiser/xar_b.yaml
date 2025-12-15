@@ -1,0 +1,13 @@
+defaults:
+  - xar
+
+d_hid: 768
+encoder_depth: &depth 8
+decoder_depth: *depth
+
+encoder_block:
+  attention:
+    num_heads: 12
+decoder_block:
+  attention:
+    num_heads: 12

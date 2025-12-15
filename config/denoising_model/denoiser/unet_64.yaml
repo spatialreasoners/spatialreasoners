@@ -1,0 +1,5 @@
+defaults:
+  - unet
+
+hid_dims: [128, 256, 256, 512]
+attention: [false, false, true, true]

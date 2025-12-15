@@ -1,0 +1,5 @@
+name: cifar10
+root: null
+data_shape: [3, 32, 32]
+subset_size: null
+augment: true

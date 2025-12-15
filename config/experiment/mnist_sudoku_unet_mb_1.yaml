@@ -1,0 +1,8 @@
+# @package _global_
+
+defaults:
+  - mnist_sudoku_unet_base
+  - /time_sampler: mean_beta
+
+checkpointing:
+  load: null # Provide path here to run the tests 

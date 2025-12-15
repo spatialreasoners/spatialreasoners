@@ -1,0 +1,7 @@
+name: sinusodial
+# NOTE T_max == 999 in discrete diffusion and here 1
+scale: 1000
+shift: -1
+max_period: 10000
+d_emb: 256
+act: silu

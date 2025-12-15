@@ -1,0 +1,5 @@
+name: realestate10k
+root: null
+data_shape: [8, 3, 256, 256] # [num_frames, num_channels, height, width]
+
+frame_skip_range: [10, 20]

@@ -1,0 +1,10 @@
+# Include config files
+recursive-include config *.yaml *.yml
+include config/__init__.py
+
+# Include setup utilities for custom build
+include setup_utils.py
+
+# Include documentation
+include README.md
+include LICENSE

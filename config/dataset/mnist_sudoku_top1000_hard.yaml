@@ -1,0 +1,5 @@
+defaults:
+  - mnist_sudoku_top1000
+
+
+given_cells_range: [0, 27]

@@ -1,0 +1,19 @@
+# @package _global_
+
+
+defaults:
+  - mnist_sudoku_unet_base
+  - /time_sampler: mean_beta_trainable
+  
+
+time_sampler:
+  normalization_weighing:
+    name: trainable
+    weighing_model_path: null # Provide path here to the weighing model
+    hidden_dim: 64
+    num_residual_blocks: 6
+    max_weight: 15.0
+
+
+checkpointing:
+  load: null # Provide path here to run the tests 

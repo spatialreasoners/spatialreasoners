@@ -1,0 +1,17 @@
+defaults:
+  - denoiser
+
+name: mar
+block:
+  attention:
+    attn_drop: 0.1
+    out_drop: 0.1
+    # NOTE that this is not the case for the original MAR 
+    # but improves training stability
+    qk_norm: false # true
+  mlp_ratio: 4.
+denoiser_mlp:
+  d_hid: 1024
+  depth: 3
+patch_size: [1, 1]
+buffer_size: 64

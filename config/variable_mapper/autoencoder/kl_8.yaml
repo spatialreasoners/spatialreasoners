@@ -1,0 +1,3 @@
+name: kl_image
+scaling_factor: 0.18215
+pretrained_model_name: stabilityai/sd-vae-ft-ema

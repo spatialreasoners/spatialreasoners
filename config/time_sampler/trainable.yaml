@@ -1,0 +1,5 @@
+defaults:
+  - scalar_time_sampler: uniform_trimmed
+
+name: trainable
+weighing_model_path: null # Provide path here to the weighing model
