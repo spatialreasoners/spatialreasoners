@@ -23,6 +23,7 @@ from .dataset import get_dataset
 from .env import DEBUG
 from .global_cfg import set_cfg
 from .misc.local_logger import LocalLogger
+from .misc.wandb_tools import update_checkpoint_path
 from .training import SRMLightningModule, DataModule
 from .variable_mapper import get_variable_mapper
 
@@ -277,13 +278,44 @@ def create_lightning_module(
             unstructured_sample_shape = config.dataset.data_shape
             variable_mapper = get_variable_mapper(config.variable_mapper, unstructured_sample_shape)
     
-    # Create Lightning module with proper parameters (matching _main.py)
-    lightning_module = SRMLightningModule(
-        cfg=config,  # Full config, not just training section
-        num_classes=num_classes,
-        variable_mapper=variable_mapper,
-        **kwargs
-    )
+    # Load checkpoint path
+    checkpoint_path = update_checkpoint_path(config.checkpointing.load, config.wandb.project)
+    
+    lightning_module = None
+    
+    # Check if we can load directly from Lightning checkpoint
+    if checkpoint_path is not None and checkpoint_path.exists() and checkpoint_path.suffix == ".ckpt":
+        print(f"Loading weights from {checkpoint_path}")
+        try:
+            lightning_module = SRMLightningModule.load_from_checkpoint(
+                checkpoint_path, 
+                cfg=config, 
+                num_classes=num_classes, 
+                variable_mapper=variable_mapper, 
+                strict=False,
+                **kwargs
+            )
+        except Exception as e:
+            print(f"Error loading model weights from {checkpoint_path}: {e}")
+            # Fall back to fresh initialization below
+
+    if lightning_module is None:
+        # Create Lightning module with proper parameters (matching _main.py)
+        lightning_module = SRMLightningModule(
+            cfg=config,  # Full config, not just training section
+            num_classes=num_classes,
+            variable_mapper=variable_mapper,
+            **kwargs
+        )
+
+        # Load state dict if applicable (not .ckpt)
+        if checkpoint_path is not None and checkpoint_path.exists() and checkpoint_path.suffix != ".ckpt":
+            print(f"Loading weights from {checkpoint_path}")
+            try:
+                state_dict = torch.load(checkpoint_path, map_location="cpu", weights_only=True)
+                lightning_module.load_state_dict(state_dict, strict=False)
+            except Exception as e:
+                print(f"Error loading state dict from {checkpoint_path}: {e}")
     
     return lightning_module
 
